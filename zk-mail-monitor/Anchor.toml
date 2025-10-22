@@ -1,0 +1,15 @@
+[programs.localnet]
+zk_mail_monitor = "Zk11111111111111111111111111111111111111111" # placeholder
+
+[registry]
+url = "https://api.devnet.solana.com"
+
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+[toolchain]
+anchor_version = "0.32.1"
