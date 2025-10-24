@@ -24,5 +24,6 @@
       "@components/*": ["./src/components/*"]
     }
   },
-  "include": ["src"]
+   "include": ["src", "../mailchain-service/src", "../analyzer/src"]
+
 }

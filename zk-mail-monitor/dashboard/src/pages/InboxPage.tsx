@@ -22,31 +22,41 @@ export const InboxPage: React.FC = () => {
 
   // Analyze emails when loaded
   useEffect(() => {
-    if (emails.length > 0) {
-      const analyzed = emails.map(email => ({
-        email,
-        analysis: null,
-        loading: true,
-      }));
-      setEmailsWithAnalysis(analyzed);
-
-      // Analyze each email
-      emails.forEach(async (email, index) => {
-        const analysis = await analyzeEmail(email);
-        setEmailsWithAnalysis(prev => {
-          const updated = [...prev];
-          updated[index] = { email, analysis, loading: false };
-          return updated;
-        });
-      });
+    let cancelled = false;
+    if (emails.length === 0) {
+      setEmailsWithAnalysis([]);
+      setSelectedEmail(null);
+      return;
     }
-  }, [emails]);
+
+    const analyzed = emails.map(email => ({
+      email,
+      analysis: null,
+      loading: true,
+    }));
+    setEmailsWithAnalysis(analyzed);
+
+    // Analyze each email
+    emails.forEach(async (email, index) => {
+      const analysis = await analyzeEmail(email);
+      if (cancelled) return;
+      setEmailsWithAnalysis(prev => {
+        const updated = [...prev];
+        updated[index] = { email, analysis, loading: false };
+        return updated;
+      });
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [emails, analyzeEmail]);
 
   // Filter emails
   const filteredEmails = emailsWithAnalysis.filter(item => {
     if (filter === 'all') return true;
-    if (filter === 'safe') return item.analysis && !item.analysis.isMalicious;
-    if (filter === 'threats') return item.analysis && item.analysis.isMalicious;
+    if (filter === 'safe') return Boolean(item.analysis && !item.analysis.isMalicious);
+    if (filter === 'threats') return Boolean(item.analysis && item.analysis.isMalicious);
     return true;
   });
 
@@ -84,7 +94,7 @@ export const InboxPage: React.FC = () => {
                 }`}
               >
                 Safe (
-                {emailsWithAnalysis.filter(e => e.analysis && !e.analysis.isMalicious).length})
+                {emailsWithAnalysis.filter(e => Boolean(e.analysis && !e.analysis.isMalicious)).length})
               </button>
               <button
                 onClick={() => setFilter('threats')}
@@ -95,7 +105,7 @@ export const InboxPage: React.FC = () => {
                 }`}
               >
                 Threats (
-                {emailsWithAnalysis.filter(e => e.analysis && e.analysis.isMalicious).length})
+                {emailsWithAnalysis.filter(e => Boolean(e.analysis && e.analysis.isMalicious)).length})
               </button>
             </div>
             <button
