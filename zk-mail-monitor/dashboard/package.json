@@ -4,8 +4,6 @@
   "private": true,
   "dependencies": {
     "@babel/preset-env": "^7.28.5",
-    "@babel/preset-react": "^7.28.5",
-    "@babel/preset-typescript": "^7.28.5",
     "@coral-xyz/anchor": "^0.32.1",
     "@solana/web3.js": "^1.98.4",
     "@testing-library/dom": "^10.4.1",
@@ -60,6 +58,8 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
     "@craco/craco": "^7.1.0",
     "react-app-rewire-alias": "^1.1.7",
     "react-app-rewired": "^2.2.1"

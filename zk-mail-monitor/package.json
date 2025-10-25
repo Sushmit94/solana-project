@@ -8,6 +8,14 @@
     "@coral-xyz/anchor": "^0.32.1",
     "@solana/web3.js": "^1.91.7"
   },
+  "workspaces": [
+  "dashboard",
+  "analyzer",
+  "mailchain-service",
+  "reputation-engine",
+  "client"
+],
+
   "devDependencies": {
     "@types/bn.js": "^5.1.0",
     

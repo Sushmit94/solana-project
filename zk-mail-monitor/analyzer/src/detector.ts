@@ -1,8 +1,8 @@
 // analyzer/src/detector.ts
 // Enhanced malicious mail detector with comprehensive threat analysis
-import type { EmailMessage } from '../../mailchain-service/src/mailchain-client';
-import { EmailParser } from '../../mailchain-service/src/email-parser';
-import type { ParsedEmail } from '../../mailchain-service/src/email-parser';
+import type { EmailMessage } from '../../mailchain-service/src/mailchain-client.js';
+import { EmailParser } from '../../mailchain-service/src/email-parser.js';
+import type { ParsedEmail } from '../../mailchain-service/src/email-parser.js';
 import keywordsJson from './keywords.json';
 
 export enum ThreatLevel {
