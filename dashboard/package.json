@@ -1,5 +1,6 @@
 {
   "scripts": {
+     "name": "dashboard",
     "start": "react-app-rewired start",
     "build": "react-scripts build",
     "test": "react-app-rewired test",
