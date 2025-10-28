@@ -1,10 +1,18 @@
 {
+  "name": "dashboard",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
-     "name": "dashboard",
     "start": "react-app-rewired start",
     "build": "react-scripts build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@mailchain/sdk": "^0.31.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.18.6",
@@ -36,10 +44,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "dependencies": {
-    "@mailchain/sdk": "^0.31.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
   }
 }
