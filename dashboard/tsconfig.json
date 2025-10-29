@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": ["dom", "dom.iterable", "es2017"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@reputation-engine/*": ["../reputation-engine/src/*"],
+      "@analyzer/*": ["../analyzer/src/*"],
+      "@mailchain-service/*": ["../mailchain-service/src/*"],
+      "@client/*": ["../client/src/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@components/*": ["./src/components/*"]
+    },
+    "types": ["node"]
+  },
+  "include": ["src", "../mailchain-service/src", "../analyzer/src", "../reputation-engine/src"],
+  "exclude": ["node_modules", "build", "dist"]
+}
